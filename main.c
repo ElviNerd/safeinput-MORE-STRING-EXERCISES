@@ -53,6 +53,21 @@ void FindnrcharinLoop(){
 }*/
 
 void main(){
+    char string[] = "This is a string you are supposed to change";
+
+    for(int i=0; i<strlen(string);i++){
+        if(string[i]== ' ')
+            string[i] ='*';
+    }
+
+    int count = 0;
+    for(int i=0; i<strlen(string);i++){
+        if(string[i] =='*')
+            count++;
+    }
+
+    printf("I found %c    %d times", '*', count);
+
 
 
 }
