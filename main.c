@@ -122,8 +122,8 @@ int wordCount()
     return 0;
 }*/
 void main(){
-    char text[100];
-    GetInput("Ange en text:",text, sizeof(text));
+    char text[100]; 
+    GetInput("Ange en text:",text, sizeof(text)); // endast ett ord
 
     char upLowcase[100];
     char textBackwards[100];
@@ -146,10 +146,10 @@ void main(){
     textBackwards[count] = 0;
 
     if(strcmp(upLowcase,textBackwards)==0){
-        printf("palindrom hittat");
+        printf("Palindrom hittat");
     }
     else{
-        printf("inte palindrom");
+        printf("Detta var inte ett palindrom");
      }
 
 }
