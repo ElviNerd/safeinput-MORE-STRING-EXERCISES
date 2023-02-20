@@ -121,25 +121,35 @@ int wordCount()
 
     return 0;
 }*/
-int main(){
-    char words[300];
-    GetInput("Mata in ett ord eller en mening", words, sizeof(words));
-    // Start from leftmost & 
-    // rightmost corners of str
-    int l = 0;
-    int h = strlen(words) - 1; // -1 because of the /0
-  
-    // Keep comparing characters
-    // while they are same
-    while (h > l) {
-        if (words[l++] != words[h--]) {
-            printf("%s is not a palindrome\n", words);
-            return 0;
-            // will return from here
-        }
+void main(){
+    char text[100];
+    GetInput("Ange en text:",text, sizeof(text));
+
+    char upLowcase[100];
+    char textBackwards[100];
+
+
+    int count = 0;
+    for(int i = 0; i < strlen(text);i++){
+        if(text[i] == ' ')
+            continue;
+        upLowcase[count] = tolower(text[i]);
+        count++;
     }
-  
-    printf("You found a palindrome %s \n", words);
-  
-    return 0;
+    upLowcase[count] = 0;
+    
+    count = 0;
+    for(int i = strlen(upLowcase)-1; i>=0 ;i--){
+        textBackwards[count] = upLowcase[i];
+        count++;
+    }
+    textBackwards[count] = 0;
+
+    if(strcmp(upLowcase,textBackwards)==0){
+        printf("palindrom hittat");
+    }
+    else{
+        printf("inte palindrom");
+     }
+
 }
