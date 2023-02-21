@@ -120,7 +120,7 @@ int wordCount()
     printf("The number of words = %d", w );
 
     return 0;
-}*/
+}
 void main(){
     char text[100]; 
     GetInput("Ange en text:",text, sizeof(text)); // endast ett ord
@@ -151,5 +151,64 @@ void main(){
     else{
         printf("Detta var inte ett palindrom");
      }
+
+}
+
+#define MAX 100
+int main()
+{
+	char str[MAX]={0};	
+	int i;
+	
+	//input string
+	printf("Enter a string: ");
+	scanf("%[^\n]s",str); //Läser in alla strängar inklusive mellanrum
+	
+	//Versaler på alla varje ord
+	for(i=0; str[i]!='\0'; i++)
+	{
+		//Titta om första bokstaven är liten
+		if(i==0)
+		{
+			if((str[i]>='a' && str[i]<='z'))
+				str[i]=str[i]-32; //Substrahera 32 för att få det till en stor bokstav
+			continue; //Fortsätt loopen
+		}
+		if(str[i]==' ')//kolla mellanrum
+		{
+			//if space is found, check next character
+			++i;
+			//check next character is lowercase alphabet
+			if(str[i]>='a' && str[i]<='z')
+			{
+				str[i]=str[i]-32; //subtract 32 to make it capital
+				continue; //continue to the loop
+			}
+		}
+		else
+		{
+			//all other uppercase characters should be in lowercase
+			if(str[i]>='A' && str[i]<='Z')
+				str[i]=str[i]+32; //subtract 32 to make it small/lowercase
+		}
+	}
+	printf("Capitalize string is: %s\n",str);
+	return 0;
+}
+
+*/
+         //**STEFANS VERSION**
+void firstLetterforEveryNewWord(){
+    char text[100];
+    GetInput("Ange en text:",text, sizeof(text));
+        bool beforeWasSpace = false;
+    for(int i = 0; i < strlen(text);i++){
+        if( i == 0 ||  beforeWasSpace){
+            text[i] = toupper(text[i]);
+        }
+        beforeWasSpace = text[i] ==' '; //räknar bostäver men inte mellanslag
+
+    }
+    printf("%s\n",text);
 
 }
